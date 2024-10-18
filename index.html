@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ХАМ Комбат</title>
+    <style>
+        .btn {
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .btn img {
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .bal {
+            text-align: center;
+            justify-content: center;
+            font-family: system-ui;
+            font-weight: lighter;
+        }
+
+        body {
+            background: radial-gradient(blue, lightblue);
+        }
+
+        .count {
+            color: white;
+            position: absolute;
+            font-size: 24px;
+            font-weight: bold;
+            pointer-events: none;
+            opacity: 1;
+            transition: opacity 1s ease;
+        }
+
+        .fade-out {
+            opacity: 0;
+        }
+        .bomboclat {
+            text-align: center;
+            justify-content: center;
+        }
+        .bomboclat h1 {
+            font-family: system-ui;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="bal"><h1 id="counter">0</h1><h1>сігмафонів</h1><div>
+    <div class="btn">
+        <img src="nikol.png" alt="" onclick="incrementCounter(event)">
+    </div>
+
+    <div class="bomboclat"><h1 class="color=red">ЛІСТІНГ ЗАВТРО НА МЕРКАТОРІ ТА СЕТЕРРІ</h1></div>
+
+    <script>
+        let count = 0;
+
+        function incrementCounter(event) {
+            count++;
+            document.getElementById('counter').innerText = count;
+
+            const btnRect = event.target.getBoundingClientRect();
+            const x = event.clientX - btnRect.left;
+            const y = event.clientY - btnRect.top; 
+
+            const cEl = document.createElement('div');
+            cEl.className = 'count';
+            cEl.innerText = 'ХАМ!';
+            cEl.style.left = `${x + 500}px`;
+            cEl.style.top = `${y}px`;
+
+            const btnDiv = document.querySelector('.btn');
+            btnDiv.appendChild(cEl);
+
+            setTimeout(() => {
+                cEl.classList.add('fade-out');
+            }, 0);
+
+            setTimeout(() => {
+                cEl.remove();
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
