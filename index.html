@@ -2,34 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ХАМ Комбат</title>
     <style>
-        .btn {
-            justify-content: center;
-            text-align: center;
-            position: relative;
+        * {
+            box-sizing: border-box;
         }
 
-        .btn img {
-            border-radius: 50%;
-            cursor: pointer;
+        body {
+            background: radial-gradient(blue, lightblue);
+            margin: 0;
+            font-family: system-ui, sans-serif;
         }
 
         .bal {
             text-align: center;
             justify-content: center;
-            font-family: system-ui;
-            font-weight: lighter;
+            margin: 20px 0;
         }
 
-        body {
-            background: radial-gradient(blue, lightblue);
+        .bal h1 {
+            font-size: 2rem;
+        }
+
+        .btn {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .btn img {
+            border-radius: 50%;
+            cursor: pointer;
+            width: 100px;
+            height: auto;
         }
 
         .count {
             color: white;
             position: absolute;
-            font-size: 24px;
+            font-size: 1.5rem;
             font-weight: bold;
             pointer-events: none;
             opacity: 1;
@@ -39,23 +52,49 @@
         .fade-out {
             opacity: 0;
         }
+
         .bomboclat {
             text-align: center;
             justify-content: center;
+            margin: 20px 0;
         }
+
         .bomboclat h1 {
-            font-family: system-ui;
+            font-size: 1.8rem;
             color: red;
+        }
+
+        @media (max-width: 600px) {
+            .bal h1 {
+                font-size: 1.5rem;
+            }
+
+            .btn img {
+                width: 80px;
+            }
+
+            .count {
+                font-size: 1.2rem;
+            }
+
+            .bomboclat h1 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="bal"><h1 id="counter">0</h1><h1>сігмафонів</h1><div>
+    <div class="bal">
+        <h1 id="counter">0</h1>
+        <h1>сігмафонів</h1>
+    </div>
     <div class="btn">
-        <img src="nikol.png" alt="" onclick="incrementCounter(event)">
+        <img src="nikol.png" alt="Button Image" onclick="incrementCounter(event)">
     </div>
 
-    <div class="bomboclat"><h1 class="color=red">ЛІСТІНГ ЗАВТРО НА МЕРКАТОРІ ТА СЕТЕРРІ</h1></div>
+    <div class="bomboclat">
+        <h1>ЛІСТІНГ ЗАВТРО НА МЕРКАТОРІ ТА СЕТЕРРІ</h1>
+    </div>
 
     <script>
         let count = 0;
@@ -71,7 +110,7 @@
             const cEl = document.createElement('div');
             cEl.className = 'count';
             cEl.innerText = 'ХАМ!';
-            cEl.style.left = `${x + 500}px`;
+            cEl.style.left = `${x + 50}px`;
             cEl.style.top = `${y}px`;
 
             const btnDiv = document.querySelector('.btn');
